@@ -18,7 +18,7 @@ var articles ={
                 I am gonna develop my own web app soon.
                 This is my first code on my own on the console.
             </p>`
-  };
+  },
   'article-two': {
     title1: 'Article Two | Soniya Singh Panwar',
     heading1: '  Article Two',
@@ -34,7 +34,7 @@ var articles ={
                 Soniya Singh Panwar
                 Gweca
             </p>`
-};
+},
   'article-three': {
     title2: 'Article Three | Soniya Singh Panwar',
     date2: 'February 14,2017',
@@ -48,7 +48,7 @@ var articles ={
             </p>`,
     heading2: 'Article Three',
     arc: ' SSP\'s Web Page'
-};
+}
 
 };
 
@@ -96,91 +96,6 @@ app.get('/:articleName',function(req,res){
     var articleName= req.params.articleName;
      res.send(createTemplate(articles[articleName]));
 });
-
-
-function createTemplate1(data){
-    var title1=data.title1;
-    var heading1=data.heading1;
-    var content1=data.content1;
-    var time=data.time1;
-    var date1=data.date1;
-var HtmlTemplate1=`
-<html>
-    <head>
-        <title>
-            ${title1} 
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <link href="/ui/style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="container">
-        <div>
-            <a href="/">HOME</a>
-        </div>
-        <hr/>
-        <h4>
-            ${heading1}
-        </h4>
-        <div>
-            ${date1}
-        </div>
-        <div>
-            ${time}
-        </div>
-        <div>
-            ${content1}
-        </div>
-        </div>
-    </body>
-</html>
-
-`;
-return HtmlTemplate1;
-}
-
-function createTemplate2(data){
-    var title2=data.title2;
-    var heading2=data.heading2;
-    var content2=data.content2;
-    var arc=data.arc;
-    var date2=data.date2;
-var HtmlTemplate2=`
-<html>
-    <head>
-        <title>
-           ${title2}
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link href="/ui/style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="container">
-        <div>
-            <a href="/">HOME</a>
-        </div>
-        <hr/>
-        <h4>
-            ${heading2}
-        </h4>
-        <div>
-            ${date2}            
-        </div>
-        <div>
-            ${arc}
-        </div>
-        <div>
-           ${content2}
-        </div>
-        </div>
-    </body>
-</html>
-`;
-return HtmlTemplate2;
-}
-
-
-
 
 
 app.get('/ui/style.css', function (req, res) {
