@@ -124,8 +124,63 @@ app.get('/article-two',function(req,res){
      res.send(createTemplate1(ArticleTwo));
 });
 
+var ArticleThree= {
+    title2: 'Article Three | Soniya Singh Panwar',
+    date2: 'February 14,2017',
+    content2: `  <p>
+                This is my third article.
+                I am learning to develop a web app.
+            </p>
+            <p>
+                I am gonna develop my own web app soon.
+                This is my third code on my own on the console.
+            </p>`,
+    heading2: 'Article Three',
+    arc: ' SSP\'s Web Page'
+};
+
+function createTemplate2(data){
+    var title2=data.title2;
+    var heading2=data.heading2;
+    var content2=data.content2;
+    var arc=data.arc;
+    var date2=data.date2;
+var HtmlTemplate2=`
+<html>
+    <head>
+        <title>
+           ${title2}
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+        <div>
+            <a href="/">HOME</a>
+        </div>
+        <hr/>
+        <h4>
+            ${heading2}
+        </h4>
+        <div>
+            ${date2}            
+        </div>
+        <div>
+            ${arc}
+        </div>
+        <div>
+           ${content2}
+        </div>
+        </div>
+    </body>
+</html>
+`;
+return HtmlTemplate2;
+}
+
 app.get('/article-three',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+     res.send(createTemplate2(ArticleThree));
 });
 
 
