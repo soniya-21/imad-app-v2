@@ -63,8 +63,65 @@ app.get('/article-one',function(req,res){
     res.send(createtemplate(ArticleOne));
 });
 
+var ArticleTwo ={
+    title1: 'Article Two | Soniya Singh Panwar',
+    heading1: '  Article Two',
+    date1: 'February 14,2017 ',
+    time: ' 11:47 PM',
+    content1: `  <p>
+                This is my second article.
+                I am learning to develop a web app.
+            </p>
+            <p>
+                I am gonna develop my own web app soon.
+                This is my second code on my own on the console.
+                Soniya Singh Panwar
+                Gweca
+            </p>`
+};
+
+function createTemplate1(data){
+    var title1=data.title1;
+    var heading1=data.heading1;
+    var content1=data.content1;
+    var time=data.time1;
+    var date1=data.date1;
+var HtmlTemplate1=`
+<html>
+    <head>
+        <title>
+            ${title1} 
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+        <div>
+            <a href="/">HOME</a>
+        </div>
+        <hr/>
+        <h4>
+            ${heading1}
+        </h4>
+        <div>
+            ${date1}
+        </div>
+        <div>
+            ${time}
+        </div>
+        <div>
+            ${content1}
+        </div>
+        </div>
+    </body>
+</html>
+
+`;
+return HtmlTemplate1;
+}
 app.get('/article-two',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+     res.send(createTemplate1(ArticleTwo));
 });
 
 app.get('/article-three',function(req,res){
