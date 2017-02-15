@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var ArticleOne ={
+var articles ={
+  'article-one' : {
     title: 'Article one | Soniya Singh Panwar ',
     heading: 'Article One',
     date: 'February 14,2017',
@@ -17,7 +18,38 @@ var ArticleOne ={
                 I am gonna develop my own web app soon.
                 This is my first code on my own on the console.
             </p>`
-            
+  };
+  'article-two': {
+    title1: 'Article Two | Soniya Singh Panwar',
+    heading1: '  Article Two',
+    date1: 'February 14,2017 ',
+    time: ' 11:47 PM',
+    content1: `  <p>
+                This is my second article.
+                I am learning to develop a web app.
+            </p>
+            <p>
+                I am gonna develop my own web app soon.
+                This is my second code on my own on the console.
+                Soniya Singh Panwar
+                Gweca
+            </p>`
+};
+  'article-three': {
+    title2: 'Article Three | Soniya Singh Panwar',
+    date2: 'February 14,2017',
+    content2: `  <p>
+                This is my third article.
+                I am learning to develop a web app.
+            </p>
+            <p>
+                I am gonna develop my own web app soon.
+                This is my third code on my own on the console.
+            </p>`,
+    heading2: 'Article Three',
+    arc: ' SSP\'s Web Page'
+};
+
 };
 
 function createtemplate(data){
@@ -59,26 +91,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-    res.send(createtemplate(ArticleOne));
+app.get('/:articleName',function(req,res){
+    
+    var articleName= req.params.articleName;
+     res.send(createtemplate(articles[articleName]));
 });
 
-var ArticleTwo ={
-    title1: 'Article Two | Soniya Singh Panwar',
-    heading1: '  Article Two',
-    date1: 'February 14,2017 ',
-    time: ' 11:47 PM',
-    content1: `  <p>
-                This is my second article.
-                I am learning to develop a web app.
-            </p>
-            <p>
-                I am gonna develop my own web app soon.
-                This is my second code on my own on the console.
-                Soniya Singh Panwar
-                Gweca
-            </p>`
-};
 
 function createTemplate1(data){
     var title1=data.title1;
@@ -120,24 +138,6 @@ var HtmlTemplate1=`
 `;
 return HtmlTemplate1;
 }
-app.get('/article-two',function(req,res){
-     res.send(createTemplate1(ArticleTwo));
-});
-
-var ArticleThree= {
-    title2: 'Article Three | Soniya Singh Panwar',
-    date2: 'February 14,2017',
-    content2: `  <p>
-                This is my third article.
-                I am learning to develop a web app.
-            </p>
-            <p>
-                I am gonna develop my own web app soon.
-                This is my third code on my own on the console.
-            </p>`,
-    heading2: 'Article Three',
-    arc: ' SSP\'s Web Page'
-};
 
 function createTemplate2(data){
     var title2=data.title2;
@@ -179,9 +179,7 @@ var HtmlTemplate2=`
 return HtmlTemplate2;
 }
 
-app.get('/article-three',function(req,res){
-     res.send(createTemplate2(ArticleThree));
-});
+
 
 
 
